@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Avtobus novbesi"/>
+        <attribute name="authors" value=""/>
+        <attribute name="about" value="Avtobus dayanacaginda sernisin novbesi (prioritet + adi) - Flowgorithm sxemi"/>
+        <attribute name="saved" value="2026-10-29 10:57:18 PM"/>
+        <attribute name="created" value="dXNlcjtTQUJJTkE7MjAyNi0xMC0yOTsxMDo1NTo1OCBQTTsyMTY3"/>
+        <attribute name="edited" value="dXNlcjtTQUJJTkE7MjAyNi0xMC0yOTsxMDo1NzoxOCBQTTsxOzIyNzM="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="secim" type="Integer" array="False" size=""/>
+            <declare name="yas" type="Integer" array="False" size=""/>
+            <declare name="pSay" type="Integer" array="False" size=""/>
+            <declare name="aSay" type="Integer" array="False" size=""/>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <declare name="ad" type="String" array="False" size=""/>
+            <declare name="priorAd" type="String" array="True" size="100"/>
+            <declare name="adiAd" type="String" array="True" size="100"/>
+            <declare name="priorYas" type="Integer" array="True" size="100"/>
+            <declare name="adiYas" type="Integer" array="True" size="100"/>
+            <assign variable="secim" expression="0"/>
+            <assign variable="pSay" expression="0"/>
+            <assign variable="aSay" expression="0"/>
+            <while expression="secim != 4">
+                <output expression="&quot;1. S&#601;rni&#351;in &#601;lav&#601; et&quot;" newline="True"/>
+                <output expression="&quot;2. Avtobusa s&#601;rni&#351;in mindir&quot;" newline="True"/>
+                <output expression="&quot;3. N&#246;vb&#601;l&#601;ri g&#246;st&#601;r&quot;" newline="True"/>
+                <output expression="&quot;4. &#199;&#305;x&#305;&#351;&quot;" newline="True"/>
+                <input variable="secim"/>
+                <if expression="secim == 1">
+                    <then>
+                        <input variable="ad"/>
+                        <input variable="yas"/>
+                        <if expression="yas &gt; 65">
+                            <then>
+                                <assign variable="priorAd[pSay]" expression="ad"/>
+                                <assign variable="priorYas[pSay]" expression="yas"/>
+                                <assign variable="pSay" expression="pSay + 1"/>
+                                <output expression="&quot;Prioritet n&#246;vb&#601;sin&#601; &#601;lav&#601; olundu.&quot;" newline="True"/>
+                            </then>
+                            <else>
+                                <assign variable="adiAd[aSay]" expression="ad"/>
+                                <assign variable="adiYas[aSay]" expression="yas"/>
+                                <assign variable="aSay" expression="aSay + 1"/>
+                                <output expression="&quot;Adi n&#246;vb&#601;y&#601; &#601;lav&#601; olundu.&quot;" newline="True"/>
+                            </else>
+                        </if>
+                    </then>
+                    <else>
+                        <if expression="secim == 2">
+                            <then>
+                                <if expression="pSay &gt; 0">
+                                    <then>
+                                        <output expression="&quot;Avtobusa mindi: &quot; + priorAd[0]" newline="True"/>
+                                        <for variable="i" start="" end="" direction="inc" step="1">
+                                            <assign variable="priorAd[i]" expression="priorAd[i + 1]"/>
+                                            <assign variable="priorYas[i]" expression="priorYas[i + 1]"/>
+                                        </for>
+                                        <assign variable="pSay" expression="pSay - 1"/>
+                                    </then>
+                                    <else>
+                                        <if expression="aSay &gt; 0">
+                                            <then>
+                                                <output expression="&quot;Avtobusa mindi: &quot; + adiAd[0]" newline="True"/>
+                                                <for variable="i" start="" end="" direction="inc" step="1">
+                                                    <assign variable="adiAd[i]" expression="adiAd[i + 1]"/>
+                                                    <assign variable="adiYas[i]" expression="adiYas[i + 1]"/>
+                                                </for>
+                                                <assign variable="aSay" expression="aSay - 1"/>
+                                            </then>
+                                            <else>
+                                                <output expression="&quot;N&#246;vb&#601; bo&#351;dur.&quot;" newline="True"/>
+                                            </else>
+                                        </if>
+                                    </else>
+                                </if>
+                            </then>
+                            <else>
+                                <if expression="secim == 3">
+                                    <then>
+                                        <output expression="&quot;Prioritet n&#246;vb&#601;si:&quot;" newline="True"/>
+                                        <if expression="pSay &gt; 0">
+                                            <then>
+                                                <for variable="i" start="" end="" direction="inc" step="1">
+                                                    <output expression="priorAd[i] + &quot; - &quot; + ToString(priorYas[i])" newline="True"/>
+                                                </for>
+                                            </then>
+                                            <else>
+                                                <output expression="&quot;Bo&#351;dur.&quot;" newline="True"/>
+                                            </else>
+                                        </if>
+                                        <output expression="&quot;Adi n&#246;vb&#601;:&quot;" newline="True"/>
+                                        <if expression="aSay &gt; 0">
+                                            <then>
+                                                <for variable="i" start="" end="" direction="inc" step="1">
+                                                    <output expression="adiAd[i] + &quot; - &quot; + ToString(adiYas[i])" newline="True"/>
+                                                </for>
+                                            </then>
+                                            <else>
+                                                <output expression="&quot;Bo&#351;dur.&quot;" newline="True"/>
+                                            </else>
+                                        </if>
+                                    </then>
+                                    <else>
+                                        <if expression="secim &lt; 1 || secim &gt; 4">
+                                            <then>
+                                                <output expression="&quot;Yanl&#305;&#351; se&#231;im!&quot;" newline="True"/>
+                                            </then>
+                                            <else/>
+                                        </if>
+                                    </else>
+                                </if>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+            </while>
+            <output expression="&quot;Proqram bitdi.&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
