@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Aptek novbesi"/>
+        <attribute name="authors" value=""/>
+        <attribute name="about" value="Aptekde musteri novbesi (FIFO) - Flowgorithm sxemi"/>
+        <attribute name="saved" value="2026-10-29 09:06:04 PM"/>
+        <attribute name="created" value="dXNlcjtTQUJJTkE7MjAyNi0xMC0yOTswOTowNToyNiBQTTsyMTY1"/>
+        <attribute name="edited" value="dXNlcjtTQUJJTkE7MjAyNi0xMC0yOTswOTowNjowNCBQTTsxOzIyNzA="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="secim" type="Integer" array="False" size=""/>
+            <declare name="say" type="Integer" array="False" size=""/>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <declare name="ad" type="String" array="False" size=""/>
+            <declare name="derman" type="String" array="False" size=""/>
+            <declare name="novbe" type="String" array="True" size="100"/>
+            <assign variable="secim" expression="0"/>
+            <assign variable="say" expression="0"/>
+            <while expression="secim != 5">
+                <output expression="&quot;1. M&#252;&#351;t&#601;ri &#601;lav&#601; et&quot;" newline="True"/>
+                <output expression="&quot;2. &#304;lk m&#252;&#351;t&#601;riy&#601; xidm&#601;t g&#246;st&#601;r&quot;" newline="True"/>
+                <output expression="&quot;3. N&#246;vb&#601;ni g&#246;st&#601;r&quot;" newline="True"/>
+                <output expression="&quot;4. M&#252;&#351;t&#601;ril&#601;rin say&#305;n&#305; g&#246;st&#601;r&quot;" newline="True"/>
+                <output expression="&quot;5. &#199;&#305;x&#305;&#351;&quot;" newline="True"/>
+                <input variable="secim"/>
+                <if expression="secim == 1">
+                    <then>
+                        <input variable="ad"/>
+                        <input variable="derman"/>
+                        <assign variable="novbe[say]" expression="ad + &quot; - &quot; + derman"/>
+                        <assign variable="say" expression="say + 1"/>
+                        <output expression="&quot;M&#252;&#351;t&#601;ri n&#246;vb&#601;y&#601; &#601;lav&#601; olundu.&quot;" newline="True"/>
+                    </then>
+                    <else>
+                        <if expression="secim == 2">
+                            <then>
+                                <if expression="say &gt; 0">
+                                    <then>
+                                        <output expression="&quot;Xidm&#601;t g&#246;st&#601;rildi: &quot; + novbe[0]" newline="True"/>
+                                        <for variable="i" start="" end="" direction="inc" step="1">
+                                            <assign variable="novbe[i]" expression="novbe[i + 1]"/>
+                                        </for>
+                                        <assign variable="say" expression="say - 1"/>
+                                    </then>
+                                    <else>
+                                        <output expression="&quot;N&#246;vb&#601; bo&#351;dur.&quot;" newline="True"/>
+                                    </else>
+                                </if>
+                            </then>
+                            <else>
+                                <if expression="secim == 3">
+                                    <then>
+                                        <if expression="say &gt; 0">
+                                            <then>
+                                                <for variable="i" start="" end="" direction="inc" step="1">
+                                                    <output expression="novbe[i]" newline="True"/>
+                                                </for>
+                                            </then>
+                                            <else>
+                                                <output expression="&quot;N&#246;vb&#601; bo&#351;dur.&quot;" newline="True"/>
+                                            </else>
+                                        </if>
+                                    </then>
+                                    <else>
+                                        <if expression="secim == 4">
+                                            <then>
+                                                <output expression="&quot;M&#252;&#351;t&#601;ril&#601;rin say&#305;: &quot; + ToString(say)" newline="True"/>
+                                            </then>
+                                            <else>
+                                                <if expression="secim &lt; 1 || secim &gt; 5">
+                                                    <then>
+                                                        <output expression="&quot;Yanl&#305;&#351; se&#231;im.&quot;" newline="True"/>
+                                                    </then>
+                                                    <else/>
+                                                </if>
+                                            </else>
+                                        </if>
+                                    </else>
+                                </if>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+            </while>
+            <output expression="&quot;Proqram bitdi.&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
